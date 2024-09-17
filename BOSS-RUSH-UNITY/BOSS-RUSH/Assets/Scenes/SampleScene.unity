@@ -1058,6 +1058,7 @@ Transform:
   m_Children:
   - {fileID: 792721419}
   - {fileID: 465696992}
+  - {fileID: 1285111255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &868602856
@@ -1109,16 +1110,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimingPoint: {fileID: 465696991}
+  shootPoint: {fileID: 1285111255}
   ammoIMG:
   - {fileID: 939219712}
   - {fileID: 1514982503}
   - {fileID: 716384465}
   - {fileID: 149519978}
   currentAmmo: 0
-  bullet: {fileID: 6157118986075042165, guid: feae877092c0a6542822320f96bd8348, type: 3}
-  timerToDestroyBullet: 3
-  bulletSpeed: 1
   timeToShoot: 5
+  bullet: {fileID: 6157118986075042165, guid: feae877092c0a6542822320f96bd8348, type: 3}
+  timerToDestroyBullet: 6
+  bulletSpeed: 5
 --- !u!1 &939219712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1373,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1285111254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285111255}
+  m_Layer: 0
+  m_Name: SHOOT POINT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285111255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285111254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 868602855}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1514982503
 GameObject:
   m_ObjectHideFlags: 0
