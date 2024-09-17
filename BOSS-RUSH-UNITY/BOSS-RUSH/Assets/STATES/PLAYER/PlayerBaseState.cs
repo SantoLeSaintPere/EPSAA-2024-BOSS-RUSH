@@ -22,8 +22,11 @@ public abstract class PlayerBaseState : State
 
         if(stateMachine.inputReader.isMoving)
         {
+            RotateCharacter();
             stateMachine.characterController.Move(dir * stateMachine.speed * time);
+            
         }
+
     }
 
     protected void RotateCharacter()
