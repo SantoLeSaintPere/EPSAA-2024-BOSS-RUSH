@@ -1,0 +1,135 @@
+{
+    "name": "PlayerInputControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "435e74c9-d49b-46d0-8fd2-1641d586cf32",
+            "actions": [
+                {
+                    "name": "MOVE",
+                    "type": "PassThrough",
+                    "id": "b2c543fb-f881-45ab-a63d-f86cc343987f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ROTATEY",
+                    "type": "PassThrough",
+                    "id": "f057eb83-db4d-4d23-a0e9-69986b698539",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AIM",
+                    "type": "Button",
+                    "id": "7966c35d-624e-4a97-966a-a27e08fe6a3a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "f2eb3d52-8b76-4a14-8ab5-9a706a10ec27",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MOVE",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "0386ef75-cac7-48f4-b529-45e7ed8d7525",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "MOVE",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a3093d47-4364-4c95-aa4d-e2e708d161a7",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "MOVE",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "949e35ed-6fe5-4668-bb64-d2ce39c241cf",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "MOVE",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "a9add522-f5ac-4649-8bd1-25dbfc9659c9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "MOVE",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0b6fb4c6-c38e-4bd8-aec1-6aed448a1f9e",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "ROTATEY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e71185a-ad39-4281-b8ad-765966156243",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "AIM",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "MOUSE&KEYBOARD",
+            "bindingGroup": "MOUSE&KEYBOARD",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
