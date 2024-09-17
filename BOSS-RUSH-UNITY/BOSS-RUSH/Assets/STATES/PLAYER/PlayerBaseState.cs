@@ -12,6 +12,7 @@ public abstract class PlayerBaseState : State
     }
 
     Vector3 dir;
+    public float shootTimer;
 
     #region MOVES
     protected void Move(float time)
@@ -23,6 +24,13 @@ public abstract class PlayerBaseState : State
         {
             stateMachine.characterController.Move(dir * stateMachine.speed * time);
         }
+    }
+
+    protected void RotateCharacter()
+    {
+        Quaternion lookRot = Quaternion.LookRotation(dir, Vector3.up);
+        Quaternion newLook = Quaternion.Euler(0, lookRot.y, 0);
+        stateMachine.transform.rotation = lookRot;
     }
 
     protected void Aim(float time)

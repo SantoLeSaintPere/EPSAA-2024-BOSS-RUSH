@@ -9,7 +9,7 @@ public class PlayerInputReader : MonoBehaviour
 
     public bool isMoving;
     public bool isAiming;
-
+    public bool isShooting;
 
     public bool canUseInputs = true;
 
@@ -46,6 +46,8 @@ public class PlayerInputReader : MonoBehaviour
             isAiming = controls.Player.AIM.IsPressed();
 
             lookY = controls.Player.ROTATEY.ReadValue<float>();
+
+            isShooting = controls.Player.SHOOT.IsPressed();
         }
     }
 }

@@ -53,6 +53,24 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SHOOT"",
+                    ""type"": ""Button"",
+                    ""id"": ""8aa4c002-e12f-4842-9383-775e3b1b6729"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ATTACK"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7378be7-ab54-45f2-96b3-91aa37355d6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +150,28 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
                     ""action"": ""AIM"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd4a1251-5e60-410c-bb00-4a0faef108a6"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MOUSE&KEYBOARD"",
+                    ""action"": ""SHOOT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fee091c-75bf-4442-bf8d-ee310a8481dd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MOUSE&KEYBOARD"",
+                    ""action"": ""ATTACK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,6 +200,8 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         m_Player_MOVE = m_Player.FindAction("MOVE", throwIfNotFound: true);
         m_Player_ROTATEY = m_Player.FindAction("ROTATEY", throwIfNotFound: true);
         m_Player_AIM = m_Player.FindAction("AIM", throwIfNotFound: true);
+        m_Player_SHOOT = m_Player.FindAction("SHOOT", throwIfNotFound: true);
+        m_Player_ATTACK = m_Player.FindAction("ATTACK", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +266,8 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MOVE;
     private readonly InputAction m_Player_ROTATEY;
     private readonly InputAction m_Player_AIM;
+    private readonly InputAction m_Player_SHOOT;
+    private readonly InputAction m_Player_ATTACK;
     public struct PlayerActions
     {
         private @PlayerInputControls m_Wrapper;
@@ -231,6 +275,8 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         public InputAction @MOVE => m_Wrapper.m_Player_MOVE;
         public InputAction @ROTATEY => m_Wrapper.m_Player_ROTATEY;
         public InputAction @AIM => m_Wrapper.m_Player_AIM;
+        public InputAction @SHOOT => m_Wrapper.m_Player_SHOOT;
+        public InputAction @ATTACK => m_Wrapper.m_Player_ATTACK;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +295,12 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
             @AIM.started += instance.OnAIM;
             @AIM.performed += instance.OnAIM;
             @AIM.canceled += instance.OnAIM;
+            @SHOOT.started += instance.OnSHOOT;
+            @SHOOT.performed += instance.OnSHOOT;
+            @SHOOT.canceled += instance.OnSHOOT;
+            @ATTACK.started += instance.OnATTACK;
+            @ATTACK.performed += instance.OnATTACK;
+            @ATTACK.canceled += instance.OnATTACK;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -262,6 +314,12 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
             @AIM.started -= instance.OnAIM;
             @AIM.performed -= instance.OnAIM;
             @AIM.canceled -= instance.OnAIM;
+            @SHOOT.started -= instance.OnSHOOT;
+            @SHOOT.performed -= instance.OnSHOOT;
+            @SHOOT.canceled -= instance.OnSHOOT;
+            @ATTACK.started -= instance.OnATTACK;
+            @ATTACK.performed -= instance.OnATTACK;
+            @ATTACK.canceled -= instance.OnATTACK;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -293,5 +351,7 @@ public partial class @PlayerInputControls: IInputActionCollection2, IDisposable
         void OnMOVE(InputAction.CallbackContext context);
         void OnROTATEY(InputAction.CallbackContext context);
         void OnAIM(InputAction.CallbackContext context);
+        void OnSHOOT(InputAction.CallbackContext context);
+        void OnATTACK(InputAction.CallbackContext context);
     }
 }

@@ -9,7 +9,7 @@ public class PlayerStateMachine : StateMachine
     [HideInInspector]
     public PlayerInputReader inputReader;
     [HideInInspector]
-    public PlayerAimManager aimManager;
+    public PlayerShootManager shootManager;
 
 
     public float speed = 5f;
@@ -21,7 +21,7 @@ public class PlayerStateMachine : StateMachine
     {
         inputReader = GetComponent<PlayerInputReader>();
         characterController = GetComponent<CharacterController>();
-        aimManager = GetComponent<PlayerAimManager>();
+        shootManager = GetComponent<PlayerShootManager>();
         
         Invoke("Move", 0.1f);
     }
