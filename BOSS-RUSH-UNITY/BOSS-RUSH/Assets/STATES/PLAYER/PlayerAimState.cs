@@ -21,18 +21,19 @@ public class PlayerAimState : PlayerBaseState
         if(stateMachine.inputReader.isShooting)
         {
             shootTimer += deltaTime;
+
+            if (shootTimer >= stateMachine.shootManager.fireRate && stateMachine.shootManager.currentAmmo != 0)
+            {
+                stateMachine.shootManager.Shoot();
+                shootTimer = 0;
+            }
         }
 
         else
         {
-            shootTimer = 0;
+            shootTimer = stateMachine.shootManager.fireRate;
         }
         
-        if(shootTimer >= stateMachine.shootManager.timeToShoot && stateMachine.shootManager.currentAmmo !=0)
-        {
-            stateMachine.shootManager.Shoot();
-            shootTimer = 0;
-        }
 
         if(!stateMachine.inputReader.isAiming)
         {

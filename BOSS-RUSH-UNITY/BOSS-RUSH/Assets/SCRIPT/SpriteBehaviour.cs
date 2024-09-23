@@ -8,6 +8,7 @@ public class SpriteBehaviour : MonoBehaviour
 {
     public Material spriteMat;
     SpriteRenderer spriteRenderer;
+    public bool needRot;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,9 @@ public class SpriteBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        if(!needRot)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 }

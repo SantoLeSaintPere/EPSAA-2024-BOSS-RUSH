@@ -13,7 +13,7 @@ public class PlayerShootManager : MonoBehaviour
     public int currentAmmo;
 
     [Header("SHOOT")]
-    public float timeToShoot;
+    public float fireRate;
 
     [Header("BULLET")]
     public GameObject bullet;
