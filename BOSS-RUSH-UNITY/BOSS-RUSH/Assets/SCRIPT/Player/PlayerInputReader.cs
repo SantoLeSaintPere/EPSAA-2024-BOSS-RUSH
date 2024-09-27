@@ -13,11 +13,11 @@ public class PlayerInputReader : MonoBehaviour
 
     public bool canUseInputs = true;
 
-    public PlayerInputControls controls;
+    public GameInputControls controls;
 
     private void Awake()
     {
-        controls = new PlayerInputControls();
+        controls = new GameInputControls();
     }
 
     private void OnEnable()

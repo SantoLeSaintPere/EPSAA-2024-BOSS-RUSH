@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteMat: {fileID: 2100000, guid: 988ec2019fbe81c47b54695ead791a78, type: 2}
-  needRot: 0
+  needRot: 1
