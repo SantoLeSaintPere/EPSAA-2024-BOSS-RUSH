@@ -20,12 +20,12 @@ public class PlayerInputReader : MonoBehaviour
         controls = new GameInputControls();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         controls.Player.Enable();
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         controls.Player.Disable();
     }
