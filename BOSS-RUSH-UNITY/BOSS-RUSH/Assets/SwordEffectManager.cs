@@ -14,12 +14,11 @@ public class SwordEffectManager : MonoBehaviour
     {
         HideALL();
         maxCount = effects.Length;
-        StartCoroutine(AnimationCo());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RunAnimation()
     {
+        StartCoroutine(AnimationCo());
     }
 
     void HideALL()

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
@@ -16,6 +13,7 @@ public class PlayerMoveState : PlayerBaseState
     {
         Move(deltaTime);
         CheckForAim();
+        CheckForAttack();
     }
 
     public override void OnExit()

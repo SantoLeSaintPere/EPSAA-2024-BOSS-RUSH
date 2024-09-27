@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShootManager : MonoBehaviour
@@ -15,16 +14,16 @@ public class PlayerShootManager : MonoBehaviour
     [Header("SHOOT")]
     public float fireRate;
 
-    [Header("BULLET")]
-    public GameObject bullet;
-    public float timerToDestroyBullet;
-    public float bulletSpeed;
+    [Header("Muzzle")]
+    public GameObject muzleEffect;
+    public float timeToHideMuzzleEffect;
     // Start is called before the first frame update
     void Start()
     {
         maxAmmo = ammoIMG.Length;
         currentAmmo = maxAmmo;
         DisableAimingPoint();
+        muzleEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,8 +52,14 @@ public class PlayerShootManager : MonoBehaviour
     {
         ammoIMG[currentAmmo-1].SetActive(false);
         currentAmmo--;
-        GameObject bulletInst = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-        bulletInst.GetComponent<Bullet>().speed = bulletSpeed;
-        bulletInst.GetComponent<Bullet>().timeToDestroy = timerToDestroyBullet;
+        StartCoroutine(ShowMuzzleEffect());
+    }
+
+    IEnumerator ShowMuzzleEffect()
+    {
+        muzleEffect.SetActive(true);
+        yield return new WaitForSeconds(timeToHideMuzzleEffect);
+        muzleEffect.SetActive(false);
+        StopAllCoroutines();
     }
 }

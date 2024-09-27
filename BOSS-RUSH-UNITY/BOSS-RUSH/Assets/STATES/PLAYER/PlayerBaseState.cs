@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class PlayerBaseState : State
@@ -13,6 +11,7 @@ public abstract class PlayerBaseState : State
 
     Vector3 dir;
     public float shootTimer;
+    public float attackTimer;
 
     #region MOVES
     protected void Move(float time)
@@ -24,7 +23,12 @@ public abstract class PlayerBaseState : State
         {
             RotateCharacter();
             stateMachine.characterController.Move(dir * stateMachine.speed * time);
-            
+            stateMachine.animator.Play("Walk");
+        }
+
+        else
+        {
+            stateMachine.animator.Play("Idle");
         }
 
     }
@@ -57,6 +61,14 @@ public abstract class PlayerBaseState : State
         if(stateMachine.inputReader.isAiming)
         {
             stateMachine.NextState(new PlayerAimState(stateMachine));
+        }
+    }
+
+    protected void CheckForAttack()
+    {
+        if(stateMachine.inputReader.controls.Player.ATTACK.WasPerformedThisFrame())
+        {
+            stateMachine.NextState(new PlayerAttackState(stateMachine));
         }
     }
 

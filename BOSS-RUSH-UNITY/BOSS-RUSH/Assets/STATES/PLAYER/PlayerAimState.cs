@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerAimState : PlayerBaseState
 {
@@ -16,6 +12,8 @@ public class PlayerAimState : PlayerBaseState
 
     public override void InUpdate(float deltaTime)
     {
+        stateMachine.animator.Play("Aim-Idle");
+
         Aim(deltaTime);
 
         if(stateMachine.inputReader.isShooting)

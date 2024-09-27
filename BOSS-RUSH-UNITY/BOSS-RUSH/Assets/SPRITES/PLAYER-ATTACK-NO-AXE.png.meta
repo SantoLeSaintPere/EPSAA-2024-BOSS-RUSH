@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f0e20d54bddf6c54f9318475883b40b3
+guid: b54adf68d86e81047859c32ae2dd9355
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PLAYER-ATTACK_0
+      name: PLAYER-ATTACK-NO-AXE_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c630b37bdbdf74c499a48e52d12f175e
-      internalID: -292240679
+      spriteID: 0f3c7e3e636802e4a9a5846ba97b0738
+      internalID: -1979173026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLAYER-ATTACK_1
+      name: PLAYER-ATTACK-NO-AXE_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef3aed1c2d485484580d5acba665f0fb
-      internalID: -1199017657
+      spriteID: 27723649c378f4f4ca88a688fa14e339
+      internalID: -336690427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLAYER-ATTACK_2
+      name: PLAYER-ATTACK-NO-AXE_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6365e4edefaa54040b108ee50337e9e1
-      internalID: -664852480
+      spriteID: 80b72685fef2dcc4d8f8e4d603cc0f7a
+      internalID: -1877614098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLAYER-ATTACK_3
+      name: PLAYER-ATTACK-NO-AXE_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f43162faa38cdc5429941b9910873bd3
-      internalID: -1583054198
+      spriteID: 20e1c956e35c2794a9b12024af0d962c
+      internalID: 586231820
       vertices: []
       indices: 
       edges: []
@@ -196,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: b3f8f363ca7acad4da9a1ba039016357
     internalID: 0
     vertices: []
     indices: 
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PLAYER-ATTACK_0: -292240679
-      PLAYER-ATTACK_1: -1199017657
-      PLAYER-ATTACK_2: -664852480
-      PLAYER-ATTACK_3: -1583054198
+      PLAYER-ATTACK-NO-AXE_0: -1979173026
+      PLAYER-ATTACK-NO-AXE_1: -336690427
+      PLAYER-ATTACK-NO-AXE_2: -1877614098
+      PLAYER-ATTACK-NO-AXE_3: 586231820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
