@@ -3,32 +3,33 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    public AttackS[] attacks;
-    public GameObject axeObj;
+    [HideInInspector]
+    public int currentDamage;
 
+    [Header("ANIMATIONS")]
+    public PlayerAnimations[] attackAnimations;
+    public int comboCounter;
+    public int maxAttackCount;
 
+    [HideInInspector]
+    public bool isInComboWindow;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        DisableAxe();
+        comboCounter = 0;
+        maxAttackCount = attackAnimations.Length;
     }
 
-    public void EnableAxe()
-    {
-        axeObj.SetActive(true);
-    }
 
-    public void DisableAxe()
-    {
-        axeObj.SetActive(false);
-    }
 }
 
 [Serializable]
-public class AttackS
+public class PlayerAnimations
 {
     public string attackName;
     public AnimationClip attackClip;
-    public float comboStart;
-    public float comboEnd;
+    public float comboTimeBegin;
+    public float comboTimeEnd;
+    public int damage = 1;
 }

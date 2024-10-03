@@ -8,28 +8,29 @@ public class PlayerAimState : PlayerBaseState
     public override void InStart()
     {
         stateMachine.shootManager.EnableAimingPoint();
+        timer = 0;
     }
 
     public override void InUpdate(float deltaTime)
     {
-        stateMachine.animator.Play("Aim-Idle");
+        stateMachine.animator.Play("AIM-IDLE");
 
         Aim(deltaTime);
 
         if(stateMachine.inputReader.isShooting)
         {
-            shootTimer += deltaTime;
+            timer += deltaTime;
 
-            if (shootTimer >= stateMachine.shootManager.fireRate && stateMachine.shootManager.currentAmmo != 0)
+            if (timer >= stateMachine.shootManager.fireRate && stateMachine.shootManager.currentAmmo != 0)
             {
                 stateMachine.shootManager.Shoot();
-                shootTimer = 0;
+                timer = 0;
             }
         }
 
         else
         {
-            shootTimer = stateMachine.shootManager.fireRate;
+            timer = stateMachine.shootManager.fireRate;
         }
         
 

@@ -12,6 +12,7 @@ public class PlayerMoveState : PlayerBaseState
     public override void InUpdate(float deltaTime)
     {
         Move(deltaTime);
+        CheckForDash();
         CheckForAim();
         CheckForAttack();
     }

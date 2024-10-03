@@ -24,7 +24,7 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
     ""name"": ""GameInputControls"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""PLAYER"",
             ""id"": ""435e74c9-d49b-46d0-8fd2-1641d586cf32"",
             ""actions"": [
                 {
@@ -67,6 +67,15 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""name"": ""ATTACK"",
                     ""type"": ""Button"",
                     ""id"": ""a7378be7-ab54-45f2-96b3-91aa37355d6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DASH"",
+                    ""type"": ""Button"",
+                    ""id"": ""d067b6fe-83af-41bd-8ae1-b05142faaa7b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -282,6 +291,17 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""action"": ""ATTACK"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ffb2520-edc5-4963-b8aa-7fcc70f8f416"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MOUSE&KEYBOARD"",
+                    ""action"": ""DASH"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -403,13 +423,14 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_MOVE = m_Player.FindAction("MOVE", throwIfNotFound: true);
-        m_Player_ROTATEY = m_Player.FindAction("ROTATEY", throwIfNotFound: true);
-        m_Player_AIM = m_Player.FindAction("AIM", throwIfNotFound: true);
-        m_Player_SHOOT = m_Player.FindAction("SHOOT", throwIfNotFound: true);
-        m_Player_ATTACK = m_Player.FindAction("ATTACK", throwIfNotFound: true);
+        // PLAYER
+        m_PLAYER = asset.FindActionMap("PLAYER", throwIfNotFound: true);
+        m_PLAYER_MOVE = m_PLAYER.FindAction("MOVE", throwIfNotFound: true);
+        m_PLAYER_ROTATEY = m_PLAYER.FindAction("ROTATEY", throwIfNotFound: true);
+        m_PLAYER_AIM = m_PLAYER.FindAction("AIM", throwIfNotFound: true);
+        m_PLAYER_SHOOT = m_PLAYER.FindAction("SHOOT", throwIfNotFound: true);
+        m_PLAYER_ATTACK = m_PLAYER.FindAction("ATTACK", throwIfNotFound: true);
+        m_PLAYER_DASH = m_PLAYER.FindAction("DASH", throwIfNotFound: true);
         // MENU
         m_MENU = asset.FindActionMap("MENU", throwIfNotFound: true);
         m_MENU_PASS = m_MENU.FindAction("PASS", throwIfNotFound: true);
@@ -475,32 +496,34 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_MOVE;
-    private readonly InputAction m_Player_ROTATEY;
-    private readonly InputAction m_Player_AIM;
-    private readonly InputAction m_Player_SHOOT;
-    private readonly InputAction m_Player_ATTACK;
-    public struct PlayerActions
+    // PLAYER
+    private readonly InputActionMap m_PLAYER;
+    private List<IPLAYERActions> m_PLAYERActionsCallbackInterfaces = new List<IPLAYERActions>();
+    private readonly InputAction m_PLAYER_MOVE;
+    private readonly InputAction m_PLAYER_ROTATEY;
+    private readonly InputAction m_PLAYER_AIM;
+    private readonly InputAction m_PLAYER_SHOOT;
+    private readonly InputAction m_PLAYER_ATTACK;
+    private readonly InputAction m_PLAYER_DASH;
+    public struct PLAYERActions
     {
         private @GameInputControls m_Wrapper;
-        public PlayerActions(@GameInputControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MOVE => m_Wrapper.m_Player_MOVE;
-        public InputAction @ROTATEY => m_Wrapper.m_Player_ROTATEY;
-        public InputAction @AIM => m_Wrapper.m_Player_AIM;
-        public InputAction @SHOOT => m_Wrapper.m_Player_SHOOT;
-        public InputAction @ATTACK => m_Wrapper.m_Player_ATTACK;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public PLAYERActions(@GameInputControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MOVE => m_Wrapper.m_PLAYER_MOVE;
+        public InputAction @ROTATEY => m_Wrapper.m_PLAYER_ROTATEY;
+        public InputAction @AIM => m_Wrapper.m_PLAYER_AIM;
+        public InputAction @SHOOT => m_Wrapper.m_PLAYER_SHOOT;
+        public InputAction @ATTACK => m_Wrapper.m_PLAYER_ATTACK;
+        public InputAction @DASH => m_Wrapper.m_PLAYER_DASH;
+        public InputActionMap Get() { return m_Wrapper.m_PLAYER; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(PLAYERActions set) { return set.Get(); }
+        public void AddCallbacks(IPLAYERActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PLAYERActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PLAYERActionsCallbackInterfaces.Add(instance);
             @MOVE.started += instance.OnMOVE;
             @MOVE.performed += instance.OnMOVE;
             @MOVE.canceled += instance.OnMOVE;
@@ -516,9 +539,12 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             @ATTACK.started += instance.OnATTACK;
             @ATTACK.performed += instance.OnATTACK;
             @ATTACK.canceled += instance.OnATTACK;
+            @DASH.started += instance.OnDASH;
+            @DASH.performed += instance.OnDASH;
+            @DASH.canceled += instance.OnDASH;
         }
 
-        private void UnregisterCallbacks(IPlayerActions instance)
+        private void UnregisterCallbacks(IPLAYERActions instance)
         {
             @MOVE.started -= instance.OnMOVE;
             @MOVE.performed -= instance.OnMOVE;
@@ -535,23 +561,26 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             @ATTACK.started -= instance.OnATTACK;
             @ATTACK.performed -= instance.OnATTACK;
             @ATTACK.canceled -= instance.OnATTACK;
+            @DASH.started -= instance.OnDASH;
+            @DASH.performed -= instance.OnDASH;
+            @DASH.canceled -= instance.OnDASH;
         }
 
-        public void RemoveCallbacks(IPlayerActions instance)
+        public void RemoveCallbacks(IPLAYERActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PLAYERActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerActions instance)
+        public void SetCallbacks(IPLAYERActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PLAYERActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PLAYERActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public PLAYERActions @PLAYER => new PLAYERActions(this);
 
     // MENU
     private readonly InputActionMap m_MENU;
@@ -661,13 +690,14 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_MOUSEKEYBOARDSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IPLAYERActions
     {
         void OnMOVE(InputAction.CallbackContext context);
         void OnROTATEY(InputAction.CallbackContext context);
         void OnAIM(InputAction.CallbackContext context);
         void OnSHOOT(InputAction.CallbackContext context);
         void OnATTACK(InputAction.CallbackContext context);
+        void OnDASH(InputAction.CallbackContext context);
     }
     public interface IMENUActions
     {

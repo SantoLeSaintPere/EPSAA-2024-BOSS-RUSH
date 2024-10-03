@@ -9,33 +9,37 @@ public abstract class PlayerBaseState : State
         this.stateMachine = stateMachine;
     }
 
-    Vector3 dir;
-    public float shootTimer;
-    public float attackTimer;
+    Vector3 direction;
+
+
+    protected float timer;
+    protected int counter;
+
+
 
     #region MOVES
     protected void Move(float time)
     {
-        dir = stateMachine.inputReader.direction;
-        dir.Normalize();
+        direction = stateMachine.inputReader.direction;
+        direction.Normalize();
 
         if(stateMachine.inputReader.isMoving)
         {
             RotateCharacter();
-            stateMachine.characterController.Move(dir * stateMachine.speed * time);
-            stateMachine.animator.Play("Walk");
+            stateMachine.characterController.Move(direction * stateMachine.speed * time);
+            stateMachine.animator.Play("WALK");
         }
 
         else
         {
-            stateMachine.animator.Play("Idle");
+            stateMachine.animator.Play("IDLE");
         }
 
     }
 
     protected void RotateCharacter()
     {
-        Quaternion lookRot = Quaternion.LookRotation(dir, Vector3.up);
+        Quaternion lookRot = Quaternion.LookRotation(direction, Vector3.up);
         Quaternion newLook = Quaternion.Euler(0, lookRot.y, 0);
         stateMachine.transform.rotation = lookRot;
     }
@@ -46,6 +50,12 @@ public abstract class PlayerBaseState : State
         float angle = stateMachine.yValue;
         Quaternion rot = Quaternion.Euler(0,angle,0);
         stateMachine.transform.rotation = rot;
+    }
+
+
+    protected void DashMove()
+    {
+        stateMachine.characterController.Move(stateMachine.dashManager.dashDir * stateMachine.dashManager.dashSpeed * Time.deltaTime);
     }
 
     protected void ResetRot()
@@ -66,12 +76,58 @@ public abstract class PlayerBaseState : State
 
     protected void CheckForAttack()
     {
-        if(stateMachine.inputReader.controls.Player.ATTACK.WasPerformedThisFrame())
+        if(stateMachine.inputReader.inputControls.PLAYER.ATTACK.WasPerformedThisFrame())
         {
             stateMachine.NextState(new PlayerAttackState(stateMachine));
         }
     }
 
 
+    protected void CheckForNextAttackCombo()
+    {
+
+        if (counter != stateMachine.attackManager.maxAttackCount-1)
+        {
+            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeBegin * stateMachine.frameCalculator.oneFrameInSeconds)
+            {
+                stateMachine.attackManager.isInComboWindow = true;
+                if (stateMachine.inputReader.inputControls.PLAYER.ATTACK.WasPerformedThisFrame())
+                {
+                    stateMachine.attackManager.comboCounter++;
+                    stateMachine.NextState(new PlayerAttackState(stateMachine));
+                }
+            }
+
+            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeEnd * stateMachine.frameCalculator.oneFrameInSeconds)
+            {
+                stateMachine.attackManager.isInComboWindow = false;
+            }
+        }
+    }
+
+
+    protected void CheckForDash()
+    {
+        if (stateMachine.inputReader.inputControls.PLAYER.DASH.WasPerformedThisFrame() && stateMachine.dashManager.canDash)
+        {
+            stateMachine.attackManager.comboCounter = 0;
+            CalculateDashDir();
+            stateMachine.NextState(new PlayerDashState(stateMachine));
+        }
+    }
+
     #endregion
+
+
+
+    protected void CalculateDashDir()
+    {
+        if (direction == Vector3.zero)
+        {
+            direction = Vector3.back;
+            direction.Normalize();
+        }
+
+        stateMachine.dashManager.dashDir = direction;
+    }
 }

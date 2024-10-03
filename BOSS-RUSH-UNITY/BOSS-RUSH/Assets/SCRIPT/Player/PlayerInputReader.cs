@@ -13,21 +13,21 @@ public class PlayerInputReader : MonoBehaviour
 
     public bool canUseInputs = true;
 
-    public GameInputControls controls;
+    public GameInputControls inputControls;
 
     private void Awake()
     {
-        controls = new GameInputControls();
+        inputControls = new GameInputControls();
     }
 
     public void OnEnable()
     {
-        controls.Player.Enable();
+        inputControls.PLAYER.Enable();
     }
 
     public void OnDisable()
     {
-        controls.Player.Disable();
+        inputControls.PLAYER.Disable();
     }
     // Start is called before the first frame update
     void Start()
@@ -40,14 +40,14 @@ public class PlayerInputReader : MonoBehaviour
     {
         if(canUseInputs)
         {
-            direction = new Vector3(controls.Player.MOVE.ReadValue<Vector2>().x,0, controls.Player.MOVE.ReadValue<Vector2>().y);
+            direction = new Vector3(inputControls.PLAYER.MOVE.ReadValue<Vector2>().x,0, inputControls.PLAYER.MOVE.ReadValue<Vector2>().y);
             isMoving = direction.magnitude > 0;
 
-            isAiming = controls.Player.AIM.IsPressed();
+            isAiming = inputControls.PLAYER.AIM.IsPressed();
 
-            lookY = controls.Player.ROTATEY.ReadValue<float>();
+            lookY = inputControls.PLAYER.ROTATEY.ReadValue<float>();
 
-            isShooting = controls.Player.SHOOT.IsPressed();
+            isShooting = inputControls.PLAYER.SHOOT.IsPressed();
         }
     }
 }

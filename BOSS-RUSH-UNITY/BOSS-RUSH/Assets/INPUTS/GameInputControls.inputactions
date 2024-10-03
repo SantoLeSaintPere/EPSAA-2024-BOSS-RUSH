@@ -2,7 +2,7 @@
     "name": "GameInputControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "PLAYER",
             "id": "435e74c9-d49b-46d0-8fd2-1641d586cf32",
             "actions": [
                 {
@@ -45,6 +45,15 @@
                     "name": "ATTACK",
                     "type": "Button",
                     "id": "a7378be7-ab54-45f2-96b3-91aa37355d6e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DASH",
+                    "type": "Button",
+                    "id": "d067b6fe-83af-41bd-8ae1-b05142faaa7b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -258,6 +267,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ATTACK",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ffb2520-edc5-4963-b8aa-7fcc70f8f416",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MOUSE&KEYBOARD",
+                    "action": "DASH",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
