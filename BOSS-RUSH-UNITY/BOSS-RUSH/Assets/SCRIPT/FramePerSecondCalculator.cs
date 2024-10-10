@@ -7,6 +7,7 @@ public enum FRAMERATE
 }
 public class FramePerSecondCalculator : MonoBehaviour
 {
+    [Header("BLENDER BASED FPS = 24")]
     public FRAMERATE frameRate;
     public float oneFrameInSeconds;
     float frameRateFloat;
