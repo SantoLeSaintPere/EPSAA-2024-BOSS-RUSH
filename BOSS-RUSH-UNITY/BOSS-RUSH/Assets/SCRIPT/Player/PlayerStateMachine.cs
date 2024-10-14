@@ -14,6 +14,8 @@ public class PlayerStateMachine : StateMachine
     [HideInInspector]
     public PlayerDashManager dashManager;
     [HideInInspector]
+    public PlayerGroundManager groundManager;
+    [HideInInspector]
     public FramePerSecondCalculator frameCalculator;
 
     public float speed = 5f;
@@ -30,6 +32,7 @@ public class PlayerStateMachine : StateMachine
         shootManager = GetComponent<PlayerShootManager>();
         attackManager = GetComponent<PlayerAttackManager>();
         dashManager = GetComponent<PlayerDashManager>();
+        groundManager = GetComponent<PlayerGroundManager>();
 
         frameCalculator = FindObjectOfType<FramePerSecondCalculator>();
 

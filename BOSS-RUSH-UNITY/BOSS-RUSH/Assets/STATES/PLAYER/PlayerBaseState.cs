@@ -23,9 +23,8 @@ public abstract class PlayerBaseState : State
         direction = stateMachine.inputReader.direction;
         direction.Normalize();
 
-        if(stateMachine.inputReader.isMoving)
+        if(stateMachine.inputReader.isMoving && stateMachine.groundManager.isGrounded)
         {
-            RotateCharacter();
             stateMachine.characterController.Move(direction * stateMachine.speed * time);
             stateMachine.animator.Play("WALK");
         }
@@ -37,12 +36,6 @@ public abstract class PlayerBaseState : State
 
     }
 
-    protected void RotateCharacter()
-    {
-        Quaternion lookRot = Quaternion.LookRotation(direction, Vector3.up);
-        Quaternion newLook = Quaternion.Euler(0, lookRot.y, 0);
-        stateMachine.transform.rotation = lookRot;
-    }
 
     protected void Aim(float time)
     {

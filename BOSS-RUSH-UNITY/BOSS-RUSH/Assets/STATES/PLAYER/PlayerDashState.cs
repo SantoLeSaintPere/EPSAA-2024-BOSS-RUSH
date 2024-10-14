@@ -17,7 +17,10 @@ public class PlayerDashState : PlayerBaseState
 
     public override void InUpdate(float deltaTime)
     {
-        DashMove();
+        if(stateMachine.groundManager.isGrounded)
+        {
+            DashMove();
+        }
 
         timer += Time.deltaTime;
 
