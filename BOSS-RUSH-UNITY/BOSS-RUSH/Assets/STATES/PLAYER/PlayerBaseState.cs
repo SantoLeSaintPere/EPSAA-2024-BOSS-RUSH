@@ -79,7 +79,7 @@ public abstract class PlayerBaseState : State
     protected void CheckForNextAttackCombo()
     {
 
-        if (counter != stateMachine.attackManager.maxAttackCount-1)
+        if (counter != stateMachine.attackManager.maxAttackCount)
         {
             if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeBegin * stateMachine.frameCalculator.oneFrameInSeconds)
             {

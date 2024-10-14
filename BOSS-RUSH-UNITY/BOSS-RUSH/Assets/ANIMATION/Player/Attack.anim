@@ -22,15 +22,15 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1294491813, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
-    - time: 0.1
+    - time: 0.06666667
       value: {fileID: -718203693, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
-    - time: 0.2
+    - time: 0.16666667
       value: {fileID: -1494026473, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
-    - time: 0.3
+    - time: 0.26666668
       value: {fileID: 1476059448, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
-    - time: 0.4
+    - time: 0.36666667
       value: {fileID: -662399630, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
-    - time: 0.5
+    - time: 0.46666667
       value: {fileID: -496315236, guid: 60b4d8c99c20c03419f56b3c6b177ec1, type: 3}
     attribute: m_Sprite
     path: 
@@ -65,7 +65,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.48333335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -84,4 +84,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.06666667
+    functionName: InvokeEvent
+    data: ATTACK
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
