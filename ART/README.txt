@@ -1,1 +1,3 @@
 DEPOT 04/11/2024 avant 17h
+*
+FORMAT ANIM 256 * 128
