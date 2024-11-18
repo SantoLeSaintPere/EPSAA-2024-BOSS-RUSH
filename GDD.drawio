@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="-LDpTyYphqbSj2O-KBKH">
-    <mxGraphModel dx="1098" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1106" dy="810" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -17,14 +17,17 @@
             <mxGeometry x="170" y="680" width="120" height="60" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="GaJQ5vevd6ZkqrTGCnmh-1" target="GaJQ5vevd6ZkqrTGCnmh-2">
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="GaJQ5vevd6ZkqrTGCnmh-1" target="GaJQ5vevd6ZkqrTGCnmh-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-1" value="TO TEST : MORE TOP DOWN WITH SWORD EFFECT ON CHARACTERS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-1" value="TO TEST : MORE TOP DOWN WITH SWORD EFFECT ON CHARACTERS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
           <mxGeometry x="200" y="354" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-2" value="SPRITE ROTATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-2" value="SPRITE ROTATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" parent="1" vertex="1">
           <mxGeometry x="200" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RGau7Xg3RjNS4KZCxOUh-1" value="WHEN AIMING&lt;div&gt;CAT BECOME GUN&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

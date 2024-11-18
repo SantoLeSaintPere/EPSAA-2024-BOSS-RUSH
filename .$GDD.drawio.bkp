@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="-LDpTyYphqbSj2O-KBKH">
-    <mxGraphModel dx="2954" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1098" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,15 +8,24 @@
           <mxGeometry x="540" y="390" width="80" height="80" as="geometry" />
         </mxCell>
         <UserObject label="ALICE RETURN TO MADNESS" link="https://www.youtube.com/watch?v=cFrs5UGB-ns&amp;ab_channel=ElectronicArts" id="XX-kKO_zI8TrWbcy429e-1">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
             <mxGeometry x="520" y="580" width="290" height="60" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="NINE YEARS OF SHADOWS" link="https://www.youtube.com/watch?v=n8VlBhpfwnQ&amp;ab_channel=ZhainGaming" id="XX-kKO_zI8TrWbcy429e-2">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
             <mxGeometry x="170" y="680" width="120" height="60" as="geometry" />
           </mxCell>
         </UserObject>
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="GaJQ5vevd6ZkqrTGCnmh-1" target="GaJQ5vevd6ZkqrTGCnmh-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-1" value="TO TEST : MORE TOP DOWN WITH SWORD EFFECT ON CHARACTERS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="354" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GaJQ5vevd6ZkqrTGCnmh-2" value="SPRITE ROTATION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
