@@ -207,7 +207,7 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""b6dcae65-4ab1-4a7c-917b-54747b46b5b7"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
