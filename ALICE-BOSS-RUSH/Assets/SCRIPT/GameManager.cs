@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         onPause = true;
-        inputReader.OnDisable();
+        inputReader.DisableController();
         cursormanager.isCursorNeeded = true;
         pausemanager.Pause();
     }
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         //savemanager.settingsDataManager.SaveData();
         onPause = false;
-        inputReader.OnEnable();
+        inputReader.EnableController();
         cursormanager.isCursorNeeded = false;
         pausemanager.Resume();
     }

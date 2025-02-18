@@ -42,7 +42,6 @@ public abstract class BossCakeBaseState : State
         {
             stateMachine.agent.speed = stateMachine.speed;
         }
-        stateMachine.agent.angularSpeed = stateMachine.angularSPeed;
         stateMachine.agent.stoppingDistance = stateMachine.stoppingDistance;
 
         stateMachine.agent.SetDestination(stateMachine.player.position);

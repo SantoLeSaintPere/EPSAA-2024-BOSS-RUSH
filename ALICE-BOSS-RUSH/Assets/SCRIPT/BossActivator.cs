@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class BossActivator : MonoBehaviour
 {
+    PlayerStateMachine playerStateMachine;
     public UnityEvent activeBoss;
     public GameObject panel;
     public GameObject bossUi;
@@ -13,8 +14,11 @@ public class BossActivator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerStateMachine = FindObjectOfType<PlayerStateMachine>();
+
         panel.SetActive(false);
         bossUi.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class BossActivator : MonoBehaviour
     {
         panel.SetActive(false);
         bossUi.SetActive(true);
+        playerStateMachine.NextState(new PlayerMoveState(playerStateMachine));
         activeBoss.Invoke();
         gameObject.SetActive(false);
 
@@ -35,6 +40,7 @@ public class BossActivator : MonoBehaviour
     {
         if(other.CompareTag("Player") && !locked)
         {
+            playerStateMachine.NextState(new PlayerNoMoveState(playerStateMachine));
             panel.SetActive(true);
             Invoke("Delay", animationClip.length);
             locked = true;

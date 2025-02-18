@@ -18,14 +18,15 @@ public class PlayerInputReader : MonoBehaviour
     private void Awake()
     {
         inputControls = new GameInputControls();
+        EnableController();
     }
 
-    public void OnEnable()
+    public void EnableController()
     {
         inputControls.PLAYER.Enable();
     }
 
-    public void OnDisable()
+    public void DisableController()
     {
         inputControls.PLAYER.Disable();
     }

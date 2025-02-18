@@ -23,7 +23,7 @@ public class BossCakeStage2State : BossCakeBaseState
 
         if (timer >= stateMachine.healthManager.stageTwoClip.length)
         {
-            stateMachine.NextState(new BossCakeStage2State(stateMachine));
+            stateMachine.NextState(new BossCakeChasingState(stateMachine));
         }
     }
 

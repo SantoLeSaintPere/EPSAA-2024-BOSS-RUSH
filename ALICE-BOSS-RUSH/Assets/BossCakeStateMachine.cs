@@ -25,7 +25,6 @@ public class BossCakeStateMachine : StateMachine
     public float turnSpeed = 5f;
 
     [Header("NAV MESH AGENT SETTINGS")]
-    public float angularSPeed = 240f;
     public float stoppingDistance = 2f;
 
 

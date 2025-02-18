@@ -1931,7 +1931,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2104003561}
+        m_TargetAssemblyTypeName: BossMeleeAttackManager, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!850595691 &1638054747
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2859,10 +2871,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2104003559}
+  - component: {fileID: 2104003563}
   - component: {fileID: 2104003561}
   - component: {fileID: 2104003562}
   - component: {fileID: 2104003564}
-  - component: {fileID: 2104003563}
   - component: {fileID: 2104003565}
   - component: {fileID: 2104003566}
   m_Layer: 7
@@ -2946,11 +2958,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 2104003558}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.94
+  m_Radius: 1.34
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2980,8 +2992,7 @@ MonoBehaviour:
   speed: 2.5
   stage2Speed: 5
   turnSpeed: 5
-  angularSPeed: 240
-  stoppingDistance: 2
+  stoppingDistance: 1
 --- !u!65 &2104003565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3001,8 +3012,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.776119, y: 3.1667428, z: 0.2}
-  m_Center: {x: 0.016023993, y: 1.5366285, z: 0}
+  m_Size: {x: 5.472995, y: 3.337072, z: 0.2}
+  m_Center: {x: 0.030218124, y: 2.7573197, z: 0}
 --- !u!114 &2104003566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,7 +3130,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 7.5299997, y: 7.5299997, z: 7.5299997}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2104003559}
@@ -3790,7 +3801,7 @@ MonoBehaviour:
   timeToHideMuzzleEffect: 0.125
   shootDamage: 1
   shootRange: 50
-  yOffset: 0.5
+  yOffset: 1.5
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
