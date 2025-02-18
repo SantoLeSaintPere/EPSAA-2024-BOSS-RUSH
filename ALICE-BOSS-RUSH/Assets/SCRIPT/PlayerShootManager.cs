@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerShootManager : MonoBehaviour
 {
     public GameObject aimingPoint;
-    public Transform shootPoint;
 
     [Header("AMMO")]
     public GameObject[] ammoIMG; 
@@ -17,6 +16,15 @@ public class PlayerShootManager : MonoBehaviour
     [Header("Muzzle")]
     public GameObject muzleEffect;
     public float timeToHideMuzzleEffect;
+
+    [Header("SHOOT STUFF")]
+    public int shootDamage;
+    public float shootRange;
+    public float yOffset;
+    public LayerMask enemyMask;
+
+
+    Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,16 +48,51 @@ public class PlayerShootManager : MonoBehaviour
     public void DisableAimingPoint()
     {
         aimingPoint.SetActive(false);
+
+        if (target != null)
+        {
+            target.GetComponent<BossTargetterManager>().DisableTargetter();
+            target = null;
+        }
     }
 
     public void RegainShoot()
     {
-        ammoIMG[currentAmmo].SetActive(true);
-        currentAmmo++;
+        if(currentAmmo <  maxAmmo)
+        {
+            ammoIMG[currentAmmo].SetActive(true);
+            currentAmmo++;
+        }
     }
 
+    public void CheckTarget()
+    {
+        RaycastHit newHit;
+        if (Physics.Raycast(transform.position + new Vector3(0, yOffset, 0), transform.forward, out newHit, shootRange, enemyMask))
+        {
+            target = newHit.transform;
+            target.GetComponent<BossTargetterManager>().EnableTargetter();
+        }
+
+        else
+        {
+            if (target != null)
+            {
+                target.GetComponent<BossTargetterManager>().DisableTargetter();
+                target = null;
+            }
+        }
+    }
     public void Shoot()
     {
+
+        bool canShoot =  target != null && target.GetComponent<BossHealthManager>() != null && !target.GetComponent<BossHealthManager>().healthLocked && !target.GetComponent<BossHealthManager>().isDead && currentAmmo != 0;
+
+        if (canShoot)
+        {
+            target.GetComponent<BossHealthManager>().TakeDamage(shootDamage);
+        }
+
         ammoIMG[currentAmmo-1].SetActive(false);
         currentAmmo--;
         StartCoroutine(ShowMuzzleEffect());
@@ -61,5 +104,11 @@ public class PlayerShootManager : MonoBehaviour
         yield return new WaitForSeconds(timeToHideMuzzleEffect);
         muzleEffect.SetActive(false);
         StopAllCoroutines();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position + new Vector3(0, yOffset, 0), transform.forward * shootRange);
     }
 }

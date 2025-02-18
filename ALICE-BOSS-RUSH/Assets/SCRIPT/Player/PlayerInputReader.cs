@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    public Vector3 direction;
+    public Vector2 direction;
     public float lookY;
 
     public bool isMoving;
@@ -40,7 +40,7 @@ public class PlayerInputReader : MonoBehaviour
     {
         if(canUseInputs)
         {
-            direction = new Vector3(inputControls.PLAYER.MOVE.ReadValue<Vector2>().x,0, inputControls.PLAYER.MOVE.ReadValue<Vector2>().y);
+            direction = inputControls.PLAYER.MOVE.ReadValue<Vector2>();
             isMoving = direction.magnitude > 0;
 
             isAiming = inputControls.PLAYER.AIM.IsPressed();

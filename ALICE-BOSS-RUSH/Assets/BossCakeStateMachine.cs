@@ -41,6 +41,7 @@ public class BossCakeStateMachine : StateMachine
 
     public void ActiveBoss()
     {
+        healthManager.healthLocked = false;
         frameCalculator = FindObjectOfType<FramePerSecondCalculator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         NextState(new BossCakeChasingState(this));

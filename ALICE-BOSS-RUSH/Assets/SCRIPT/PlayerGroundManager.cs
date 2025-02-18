@@ -4,42 +4,50 @@ using UnityEngine;
 
 public class PlayerGroundManager : MonoBehaviour
 {
+    PlayerDodgeManager dodgeManager;
     PlayerInputReader inputReader;
-    public float radius;
-    public LayerMask groundMask;
     public Transform groundDetectorHolder;
-    Transform groundDetector;
+    public Transform groundDetector;
+    public float range = 2f;
+    public LayerMask groundLayer;
+    //[HideInInspector]
     public bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
-        groundDetector = groundDetectorHolder.GetChild(0);
-        inputReader = FindObjectOfType<PlayerInputReader>();
+        inputReader = GetComponent<PlayerInputReader>();
+        dodgeManager = GetComponent<PlayerDodgeManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateGroundDetector();
-        isGrounded = Physics.CheckSphere(groundDetector.position, radius, groundMask);
+        isGrounded = Physics.Raycast(groundDetector.position, -groundDetector.up, range, groundLayer);
+
+
     }
 
-    public void RotateGroundDetector()
+    public void CheckGroundDetection()
     {
-        if(inputReader.isMoving)
+        if (inputReader.isMoving)
         {
-            Quaternion lookRot = Quaternion.LookRotation(inputReader.direction, Vector3.up);
-            Quaternion newLook = Quaternion.Euler(0, lookRot.y, 0);
-            groundDetectorHolder.rotation = lookRot;
+            Vector3 dir = new Vector3(inputReader.direction.x, 0, inputReader.direction.y);
+            Quaternion lookRot = Quaternion.LookRotation(dir, Vector3.up);
+            groundDetectorHolder.localRotation = lookRot;
         }
+    }
+
+    public void CheckDodgeDetection()
+    {
+
+        Quaternion lookRot = Quaternion.LookRotation(dodgeManager.dodgeDir, Vector3.up);
+        groundDetectorHolder.localRotation = lookRot;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if(groundDetector != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(groundDetector.position, radius);
-        }
+        Gizmos.color = Color.green;
+        Debug.DrawRay(groundDetector.position, -groundDetector.up * range);
     }
+
 }

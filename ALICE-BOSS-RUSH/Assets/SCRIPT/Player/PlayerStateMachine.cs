@@ -14,7 +14,7 @@ public class PlayerStateMachine : StateMachine
     [HideInInspector]
     public PlayerDodgeManager dodgeManager;
     [HideInInspector]
-    public PlayerGroundManager groundManager;
+    public PlayerGroundManager groundDetector;
     [HideInInspector]
     public PlayerHealthManager healthManager;
     [HideInInspector]
@@ -34,7 +34,7 @@ public class PlayerStateMachine : StateMachine
         shootManager = GetComponent<PlayerShootManager>();
         attackManager = GetComponent<PlayerAttackManager>();
         dodgeManager = GetComponent<PlayerDodgeManager>();
-        groundManager = GetComponent<PlayerGroundManager>();
+        groundDetector = GetComponent<PlayerGroundManager>();
 
         fpsCalculator = FindObjectOfType<FramePerSecondCalculator>();
 

@@ -13,7 +13,10 @@ public class PlayerAimState : PlayerBaseState
 
     public override void InUpdate(float deltaTime)
     {
+        stateMachine.groundDetector.CheckGroundDetection();
         stateMachine.animator.Play("IDLE");
+
+        stateMachine.shootManager.CheckTarget();
 
         Aim(deltaTime);
 

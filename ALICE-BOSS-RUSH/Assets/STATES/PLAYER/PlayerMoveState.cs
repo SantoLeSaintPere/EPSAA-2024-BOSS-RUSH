@@ -11,6 +11,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void InUpdate(float deltaTime)
     {
+        stateMachine.groundDetector.CheckGroundDetection();
         Move(deltaTime);
         CheckForDash();
         CheckForAim();

@@ -20,10 +20,10 @@ public abstract class PlayerBaseState : State
     #region MOVES
     protected void Move(float time)
     {
-        direction = stateMachine.inputReader.direction;
+        direction = new Vector3(stateMachine.inputReader.direction.x, 0, stateMachine.inputReader.direction.y);
         direction.Normalize();
 
-        if(stateMachine.inputReader.isMoving && stateMachine.groundManager.isGrounded)
+        if(stateMachine.inputReader.isMoving && stateMachine.groundDetector.isGrounded)
         {
             stateMachine.characterController.Move(direction * stateMachine.speed * time);
             stateMachine.animator.Play("WALK");
@@ -46,9 +46,12 @@ public abstract class PlayerBaseState : State
     }
 
 
-    protected void DashMove()
+    protected void DodgeMove()
     {
-        stateMachine.characterController.Move(stateMachine.dodgeManager.dodgeDir * stateMachine.dodgeManager.dodgeForce * Time.deltaTime);
+        if(stateMachine.groundDetector.isGrounded)
+        {
+            stateMachine.characterController.Move(stateMachine.dodgeManager.dodgeDir * stateMachine.dodgeManager.dodgeForce * Time.deltaTime);
+        }
     }
 
     protected void ResetRot()

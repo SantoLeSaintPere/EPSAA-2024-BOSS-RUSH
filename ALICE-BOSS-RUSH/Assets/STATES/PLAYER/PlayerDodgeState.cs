@@ -10,16 +10,17 @@ public class PlayerDodgeState : PlayerBaseState
 
     public override void InStart()
     {
+        stateMachine.groundDetector.CheckDodgeDetection();
         stateMachine.animator.Play("DASH");
         timer = 0;
-        //stateMachine.characterController.excludeLayers = stateMachine.dashManager.enemyMask;
+        stateMachine.characterController.excludeLayers = stateMachine.attackManager.enemyMask;
     }
 
     public override void InUpdate(float deltaTime)
     {
-        if(stateMachine.groundManager.isGrounded)
+        if(stateMachine.groundDetector.isGrounded)
         {
-            DashMove();
+            DodgeMove();
         }
 
         timer += Time.deltaTime;
@@ -34,6 +35,6 @@ public class PlayerDodgeState : PlayerBaseState
     public override void OnExit()
     {
         stateMachine.dodgeManager.canDodge = false;
-        //stateMachine.characterController.excludeLayers = default;
+        stateMachine.characterController.excludeLayers = default;
     }
 }

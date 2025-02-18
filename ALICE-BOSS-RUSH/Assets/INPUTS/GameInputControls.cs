@@ -409,6 +409,15 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PAUSE"",
+                    ""type"": ""Button"",
+                    ""id"": ""e015a278-26f7-4c6e-8880-c5794bfb7795"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -442,6 +451,17 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RELOAD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7961360-a641-4954-a272-26ce9ae62f5f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PAUSE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -482,6 +502,7 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
         m_GAMEMANAGER = asset.FindActionMap("GAMEMANAGER", throwIfNotFound: true);
         m_GAMEMANAGER_QUIT = m_GAMEMANAGER.FindAction("QUIT", throwIfNotFound: true);
         m_GAMEMANAGER_RELOAD = m_GAMEMANAGER.FindAction("RELOAD", throwIfNotFound: true);
+        m_GAMEMANAGER_PAUSE = m_GAMEMANAGER.FindAction("PAUSE", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -677,12 +698,14 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
     private List<IGAMEMANAGERActions> m_GAMEMANAGERActionsCallbackInterfaces = new List<IGAMEMANAGERActions>();
     private readonly InputAction m_GAMEMANAGER_QUIT;
     private readonly InputAction m_GAMEMANAGER_RELOAD;
+    private readonly InputAction m_GAMEMANAGER_PAUSE;
     public struct GAMEMANAGERActions
     {
         private @GameInputControls m_Wrapper;
         public GAMEMANAGERActions(@GameInputControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @QUIT => m_Wrapper.m_GAMEMANAGER_QUIT;
         public InputAction @RELOAD => m_Wrapper.m_GAMEMANAGER_RELOAD;
+        public InputAction @PAUSE => m_Wrapper.m_GAMEMANAGER_PAUSE;
         public InputActionMap Get() { return m_Wrapper.m_GAMEMANAGER; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -698,6 +721,9 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             @RELOAD.started += instance.OnRELOAD;
             @RELOAD.performed += instance.OnRELOAD;
             @RELOAD.canceled += instance.OnRELOAD;
+            @PAUSE.started += instance.OnPAUSE;
+            @PAUSE.performed += instance.OnPAUSE;
+            @PAUSE.canceled += instance.OnPAUSE;
         }
 
         private void UnregisterCallbacks(IGAMEMANAGERActions instance)
@@ -708,6 +734,9 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             @RELOAD.started -= instance.OnRELOAD;
             @RELOAD.performed -= instance.OnRELOAD;
             @RELOAD.canceled -= instance.OnRELOAD;
+            @PAUSE.started -= instance.OnPAUSE;
+            @PAUSE.performed -= instance.OnPAUSE;
+            @PAUSE.canceled -= instance.OnPAUSE;
         }
 
         public void RemoveCallbacks(IGAMEMANAGERActions instance)
@@ -751,5 +780,6 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
     {
         void OnQUIT(InputAction.CallbackContext context);
         void OnRELOAD(InputAction.CallbackContext context);
+        void OnPAUSE(InputAction.CallbackContext context);
     }
 }

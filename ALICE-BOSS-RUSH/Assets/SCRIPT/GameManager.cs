@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
     {
         if (inputcontrols.GAMEMANAGER.QUIT.WasPerformedThisFrame())
         {
-            Quit();
-            /*
+            //Quit();
+            
             if (!onPause)
             {
                 Pause();
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 Resume();
-            }*/
+            }
         }
     }
 

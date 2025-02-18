@@ -45,7 +45,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777478143286105349}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 6310826024934342112}
   - component: {fileID: 467525756494699281}
   m_Layer: 5
-  m_Name: Image HEALTH BAR (1)
+  m_Name: Image HEALTH BAR BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   inputReader: {fileID: 0}
   shootManager: {fileID: 0}
   attackManager: {fileID: 0}
-  dashManager: {fileID: 0}
+  dodgeManager: {fileID: 0}
   groundManager: {fileID: 0}
   healthManager: {fileID: 0}
   fpsCalculator: {fileID: 0}
@@ -1157,13 +1157,13 @@ MonoBehaviour:
   attackAnimations:
   - attackName: ATTACK 1
     attackClip: {fileID: 7400000, guid: 4f14649f6eefdaf42ba5c73139fd83e2, type: 2}
-    comboTimeBegin: 10
-    comboTimeEnd: 22
+    comboTimeBegin: 21
+    comboTimeEnd: 30
     damage: 1
   - attackName: ATTACK 2
     attackClip: {fileID: 7400000, guid: 206b3fb33f7d93e47a79c92db1b6c069, type: 2}
-    comboTimeBegin: 18
-    comboTimeEnd: 24
+    comboTimeBegin: 21
+    comboTimeEnd: 30
     damage: 1
   - attackName: ATTACK 3
     attackClip: {fileID: 7400000, guid: 33a1f242e9a1bf544a9fa140bfe6b124, type: 2}
@@ -1203,14 +1203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b59f4127c9d61640b094ab6b48708d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDir: {x: 0, y: 0, z: 0}
-  canDash: 0
-  dashSpeed: 15
-  dashTimerLimit: 0.2
-  dashTimeRecovery: 0.25
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 0
+  dodgeDir: {x: 0, y: 0, z: 0}
+  canDodge: 0
+  dodgeForce: 10
+  dodgeClip: {fileID: 7400000, guid: e2bd586c66c07b54188a4f4522324209, type: 2}
+  dodgeTimeRecovery: 0.25
 --- !u!114 &5657512269897769745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,9 +1222,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   healthBar: {fileID: 8925058186551116419}
-  deathAnim: {fileID: 0}
+  faceHealth: {fileID: 2779630014581055678}
+  Facesprites:
+  - {fileID: 21300000, guid: a264a590c9c1c3848834504be52b1241, type: 3}
+  - {fileID: 21300000, guid: bbd29a44e74f6124ca314d6213f0574e, type: 3}
+  - {fileID: 21300000, guid: a135c78d615bc404a9f436ea4257e726, type: 3}
   timeToRestart: 10
-  deathPanel: {fileID: 0}
+  deathNumber: 1
 --- !u!1 &5959040350062344874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,10 +1346,10 @@ RectTransform:
   - {fileID: 1664580946812302424}
   m_Father: {fileID: 1227641567762596790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 451.3969, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 173.3175, y: -29.29115}
+  m_SizeDelta: {x: 450.3349, y: 58.5823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4659539320603806826
 MonoBehaviour:
@@ -1368,7 +1369,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -69.56
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1660,9 +1661,9 @@ RectTransform:
   - {fileID: 3706591222083125931}
   m_Father: {fileID: 1227641567762596790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 204.1, y: -55.2}
   m_SizeDelta: {x: 328.685, y: 29.501}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5306787237445347234
@@ -1977,11 +1978,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

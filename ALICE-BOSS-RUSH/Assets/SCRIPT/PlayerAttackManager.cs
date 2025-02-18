@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    [HideInInspector]
-    public int currentDamage;
+    PlayerShootManager shootManager;
+    public int currentDamage = 1;
 
     [Header("SETTINGS")]
     public float yOffset = 0.5f;
@@ -21,18 +21,19 @@ public class PlayerAttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shootManager = GetComponent<PlayerShootManager>();
         comboCounter = 0;
         maxAttackCount = attackAnimations.Length -1;
     }
 
     public void Attack()
     {
-        currentDamage = attackAnimations[comboCounter].damage;
 
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position + new Vector3(0,yOffset,0), attackRange, enemyMask);
         foreach (Collider collider in hitEnemies)
         {
-            //collider.GetComponent<EnemyHealthManager>().TakeDamage(currentDamage);
+            shootManager.RegainShoot();
+            collider.GetComponent<BossHealthManager>().TakeDamage(currentDamage);
         }
     }
     private void OnDrawGizmosSelected()
@@ -49,5 +50,4 @@ public class PlayerAnimations
     public AnimationClip attackClip;
     public float comboTimeBegin;
     public float comboTimeEnd;
-    public int damage = 1;
 }
