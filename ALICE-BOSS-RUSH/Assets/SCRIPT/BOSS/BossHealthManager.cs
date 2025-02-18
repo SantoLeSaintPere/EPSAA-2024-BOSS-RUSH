@@ -23,8 +23,8 @@ public class BossHealthManager : MonoBehaviour
     [Header("STAGE 2")]
     [Range(2,3)]
     public int stageHealthDivider =3;
-    public AnimationClip stage2Clip;
-    public float timeToShowSecondSword;
+
+    public AnimationClip stageTwoClip;
     // Start is called before the first frame update
     void Start()
     {

@@ -48,7 +48,7 @@ public abstract class PlayerBaseState : State
 
     protected void DashMove()
     {
-        stateMachine.characterController.Move(stateMachine.dashManager.dashDir * stateMachine.dashManager.dashSpeed * Time.deltaTime);
+        stateMachine.characterController.Move(stateMachine.dodgeManager.dodgeDir * stateMachine.dodgeManager.dodgeForce * Time.deltaTime);
     }
 
     protected void ResetRot()
@@ -81,7 +81,7 @@ public abstract class PlayerBaseState : State
 
         if (counter != stateMachine.attackManager.maxAttackCount)
         {
-            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeBegin * stateMachine.frameCalculator.oneFrameInSeconds)
+            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeBegin * stateMachine.fpsCalculator.oneFrameInSeconds)
             {
                 stateMachine.attackManager.isInComboWindow = true;
                 if (stateMachine.inputReader.inputControls.PLAYER.ATTACK.WasPerformedThisFrame())
@@ -91,7 +91,7 @@ public abstract class PlayerBaseState : State
                 }
             }
 
-            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeEnd * stateMachine.frameCalculator.oneFrameInSeconds)
+            if (timer >= stateMachine.attackManager.attackAnimations[counter].comboTimeEnd * stateMachine.fpsCalculator.oneFrameInSeconds)
             {
                 stateMachine.attackManager.isInComboWindow = false;
             }
@@ -101,11 +101,11 @@ public abstract class PlayerBaseState : State
 
     protected void CheckForDash()
     {
-        if (stateMachine.inputReader.inputControls.PLAYER.DASH.WasPerformedThisFrame() && stateMachine.dashManager.canDash)
+        if (stateMachine.inputReader.inputControls.PLAYER.DASH.WasPerformedThisFrame() && stateMachine.dodgeManager.canDodge)
         {
             stateMachine.attackManager.comboCounter = 0;
             CalculateDashDir();
-            stateMachine.NextState(new PlayerDashState(stateMachine));
+            stateMachine.NextState(new PlayerDodgeState(stateMachine));
         }
     }
 
@@ -115,12 +115,10 @@ public abstract class PlayerBaseState : State
 
     protected void CalculateDashDir()
     {
-        if (direction == Vector3.zero)
+        if(direction == Vector3.zero)
         {
-            direction = Vector3.back;
-            direction.Normalize();
+            direction = -stateMachine.transform.forward;
         }
-
-        stateMachine.dashManager.dashDir = direction;
+        stateMachine.dodgeManager.dodgeDir = direction;
     }
 }

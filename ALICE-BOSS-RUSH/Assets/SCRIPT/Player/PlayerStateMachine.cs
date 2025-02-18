@@ -12,11 +12,13 @@ public class PlayerStateMachine : StateMachine
     [HideInInspector]
     public PlayerAttackManager attackManager;
     [HideInInspector]
-    public PlayerDashManager dashManager;
+    public PlayerDodgeManager dodgeManager;
     [HideInInspector]
     public PlayerGroundManager groundManager;
     [HideInInspector]
-    public FramePerSecondCalculator frameCalculator;
+    public PlayerHealthManager healthManager;
+    [HideInInspector]
+    public FramePerSecondCalculator fpsCalculator;
 
     public float speed = 5f;
     public float rotSpeed = 1f;
@@ -31,10 +33,10 @@ public class PlayerStateMachine : StateMachine
         characterController = GetComponent<CharacterController>();
         shootManager = GetComponent<PlayerShootManager>();
         attackManager = GetComponent<PlayerAttackManager>();
-        dashManager = GetComponent<PlayerDashManager>();
+        dodgeManager = GetComponent<PlayerDodgeManager>();
         groundManager = GetComponent<PlayerGroundManager>();
 
-        frameCalculator = FindObjectOfType<FramePerSecondCalculator>();
+        fpsCalculator = FindObjectOfType<FramePerSecondCalculator>();
 
         Invoke("Move", 0.1f);
     }

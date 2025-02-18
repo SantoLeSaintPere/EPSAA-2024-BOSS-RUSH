@@ -13,7 +13,7 @@ public class PlayerAimState : PlayerBaseState
 
     public override void InUpdate(float deltaTime)
     {
-        stateMachine.animator.Play("AIM-IDLE");
+        stateMachine.animator.Play("IDLE");
 
         Aim(deltaTime);
 
