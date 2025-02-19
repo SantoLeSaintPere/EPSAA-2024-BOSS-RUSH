@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
     PlayerInputReader inputReader;
     PlayerGroundManager groundManager;
 
+    Animator animator;
+
     public float speed = 5; 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,8 @@ public class PlayerMove : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         inputReader = GetComponent<PlayerInputReader>();
         groundManager = GetComponent<PlayerGroundManager>();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,13 @@ public class PlayerMove : MonoBehaviour
             {
                 characterController.Move(direction * speed * Time.deltaTime);
             }
+
+            animator.Play("WALK");
+        }
+
+        else
+        {
+            animator.Play("IDLE");
         }
     }
 }

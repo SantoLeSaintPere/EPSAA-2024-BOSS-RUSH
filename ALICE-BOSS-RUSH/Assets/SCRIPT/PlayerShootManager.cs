@@ -26,6 +26,8 @@ public class PlayerShootManager : MonoBehaviour
 
 
     Transform target;
+
+    public bool gunUnlocked = true;
     // Start is called before the first frame update
     void Start()
     {

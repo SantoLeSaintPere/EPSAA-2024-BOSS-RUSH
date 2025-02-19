@@ -64,7 +64,7 @@ public abstract class PlayerBaseState : State
 
     protected void CheckForAim()
     {
-        if(stateMachine.inputReader.isAiming)
+        if(stateMachine.inputReader.isAiming && stateMachine.shootManager.gunUnlocked)
         {
             stateMachine.NextState(new PlayerAimState(stateMachine));
         }

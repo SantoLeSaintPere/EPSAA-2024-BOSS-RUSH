@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BossMeleeAttackManager : MonoBehaviour
 {
+    [HideInInspector]
     public bool isPlayerInAttackRange;
     public float attackRange;
     public LayerMask playerMask;
     public int damage;
-    public BossAttacks[] bossAttacks; 
+    public BossAttacks[] bossAttacks;
+    //[HideInInspector]
     public int attackCounter;
     // Start is called before the first frame update
     void Start()
