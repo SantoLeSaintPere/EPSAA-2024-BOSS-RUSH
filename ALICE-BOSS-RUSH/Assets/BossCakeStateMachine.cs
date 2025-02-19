@@ -26,7 +26,8 @@ public class BossCakeStateMachine : StateMachine
 
     [Header("NAV MESH AGENT SETTINGS")]
     public float stoppingDistance = 2f;
-
+    [HideInInspector]
+    public NextLevelLoader nextLevelLoader;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class BossCakeStateMachine : StateMachine
 
         attackManager = GetComponent<BossMeleeAttackManager>();
         healthManager = GetComponent<BossHealthManager>();
+        nextLevelLoader = FindObjectOfType<NextLevelLoader>();
     }
 
     public void ActiveBoss()

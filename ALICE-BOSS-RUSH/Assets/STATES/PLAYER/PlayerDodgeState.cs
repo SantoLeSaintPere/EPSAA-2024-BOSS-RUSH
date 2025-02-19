@@ -14,6 +14,7 @@ public class PlayerDodgeState : PlayerBaseState
         stateMachine.animator.Play("DASH");
         timer = 0;
         stateMachine.characterController.excludeLayers = stateMachine.attackManager.enemyMask;
+        stateMachine.healthManager.isInvicible = true;
     }
 
     public override void InUpdate(float deltaTime)
@@ -36,5 +37,6 @@ public class PlayerDodgeState : PlayerBaseState
     {
         stateMachine.dodgeManager.canDodge = false;
         stateMachine.characterController.excludeLayers = default;
+        stateMachine.healthManager.isInvicible = false;
     }
 }

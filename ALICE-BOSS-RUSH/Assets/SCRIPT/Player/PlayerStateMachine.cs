@@ -24,8 +24,10 @@ public class PlayerStateMachine : StateMachine
     public float rotSpeed = 1f;
     [HideInInspector]
     public float yValue;
-
+    [HideInInspector]
     public Animator animator;
+    [HideInInspector]
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +37,12 @@ public class PlayerStateMachine : StateMachine
         attackManager = GetComponent<PlayerAttackManager>();
         dodgeManager = GetComponent<PlayerDodgeManager>();
         groundDetector = GetComponent<PlayerGroundManager>();
-
+        healthManager = GetComponent<PlayerHealthManager>();
         fpsCalculator = FindObjectOfType<FramePerSecondCalculator>();
 
+        animator = GetComponentInChildren<Animator>();
+
+        gameManager = FindObjectOfType<GameManager>();
         Invoke("Move", 0.1f);
     }
 

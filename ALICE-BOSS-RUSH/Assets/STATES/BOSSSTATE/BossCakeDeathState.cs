@@ -13,6 +13,7 @@ public class BossCakeDeathState : BossCakeBaseState
     {
         stateMachine.animator.Play("DEATH");
         stateMachine.healthManager.uiHolder.SetActive(false);
+        stateMachine.nextLevelLoader.isLocked = false;
     }
 
     public override void InUpdate(float deltaTime)

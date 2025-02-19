@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +17,19 @@ public class PlayerHealthManager : MonoBehaviour
 
     [Range(1,3)]
     public int deathNumber = 1;
+    [HideInInspector]
+    public bool isInvicible;
+    [Header("STUN SETTINGS")]
+    public SpriteRenderer bodySprite;
+    public float stunTimer;
+    Color white, red;
     // Start is called before the first frame update
     void Start()
     {
         stateMachine = GetComponent<PlayerStateMachine>();
         ResetHealth();
+        white = Color.white;
+        red = Color.red;
     }
 
     // Update is called once per frame
@@ -54,11 +63,24 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!isInvicible)
+        {
+            health -= damage;
+            StartCoroutine(Stuntime());
+        }
     }
 
     public void ResetHealth()
     {
         health = maxHealth;
+    }
+
+
+    IEnumerator Stuntime()
+    {
+        bodySprite.color = red;
+        yield return new WaitForSeconds(stunTimer);
+        bodySprite.color = white;
+        StopAllCoroutines();
     }
 }

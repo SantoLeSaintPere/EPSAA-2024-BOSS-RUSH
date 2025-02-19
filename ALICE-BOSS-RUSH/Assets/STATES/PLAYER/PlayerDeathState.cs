@@ -17,9 +17,9 @@ public class PlayerDeathState : PlayerBaseState
     public override void InUpdate(float deltaTime)
     {
         timer += Time.deltaTime;
-        if (timer >= stateMachine.healthManager.timeToRestart * stateMachine.fpsCalculator.oneFrameInSeconds)
+        if (timer >= stateMachine.healthManager.timeToRestart )
         {
-            Debug.Log("RELOAD");
+            stateMachine.gameManager.Reload();
         }
     }
 

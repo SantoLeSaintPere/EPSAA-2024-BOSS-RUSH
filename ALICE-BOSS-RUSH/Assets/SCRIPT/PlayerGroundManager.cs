@@ -44,7 +44,7 @@ public class PlayerGroundManager : MonoBehaviour
         groundDetectorHolder.localRotation = lookRot;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Debug.DrawRay(groundDetector.position, -groundDetector.up * range);

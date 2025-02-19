@@ -36,7 +36,7 @@ public class PlayerAttackManager : MonoBehaviour
             collider.GetComponent<BossHealthManager>().TakeDamage(currentDamage);
         }
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position + new Vector3(0, yOffset, 0), attackRange);

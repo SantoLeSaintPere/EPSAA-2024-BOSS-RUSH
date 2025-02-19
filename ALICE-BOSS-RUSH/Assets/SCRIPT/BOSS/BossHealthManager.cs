@@ -25,11 +25,19 @@ public class BossHealthManager : MonoBehaviour
     public int stageHealthDivider =3;
 
     public AnimationClip stageTwoClip;
+
+
+    [Header("STUN SETTINGS")]
+    public SpriteRenderer bodySprite;
+    public float stunTimer;
+    Color white, red;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         healthLocked = true;
+        white = Color.white;
+        red = Color.red;
     }
 
     // Update is called once per frame
@@ -46,5 +54,15 @@ public class BossHealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        StartCoroutine(Stuntime());
+    }
+
+
+    IEnumerator Stuntime()
+    {
+        bodySprite.color = red;
+        yield return new WaitForSeconds(stunTimer);
+        bodySprite.color = white;
+        StopAllCoroutines();
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerShootManager : MonoBehaviour
 {
     public GameObject aimingPoint;
+    public GameObject damageZoneIndicator;
 
     [Header("AMMO")]
     public GameObject[] ammoIMG; 
@@ -43,11 +44,13 @@ public class PlayerShootManager : MonoBehaviour
     public void EnableAimingPoint()
     {
         aimingPoint.SetActive(true);
+        damageZoneIndicator.SetActive(false);
     }
 
     public void DisableAimingPoint()
     {
         aimingPoint.SetActive(false);
+        damageZoneIndicator.SetActive(true);
 
         if (target != null)
         {
