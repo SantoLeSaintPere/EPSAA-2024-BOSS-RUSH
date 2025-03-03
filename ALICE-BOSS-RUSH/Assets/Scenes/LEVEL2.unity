@@ -4294,7 +4294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847637900843936426, guid: 657fa0b443eceb445b3dbf0e14452eef, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5956100160139257267, guid: 657fa0b443eceb445b3dbf0e14452eef, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4315,10 +4315,6 @@ PrefabInstance:
     - target: {fileID: 7427886201462377753, guid: 657fa0b443eceb445b3dbf0e14452eef, type: 3}
       propertyPath: gunUnlocked
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8121381610999865917, guid: 657fa0b443eceb445b3dbf0e14452eef, type: 3}
-      propertyPath: m_text
-      value: MENU
       objectReference: {fileID: 0}
     - target: {fileID: 8612134457299547996, guid: 657fa0b443eceb445b3dbf0e14452eef, type: 3}
       propertyPath: m_LocalPosition.x
