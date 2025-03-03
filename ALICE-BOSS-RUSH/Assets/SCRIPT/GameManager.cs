@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     //SaveManager savemanager;
 
     public static bool onPause;
+    public SceneField mainMenu;
     private void Awake()
     {
         inputcontrols = new GameInputControls();
@@ -39,6 +40,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckPause();
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenu);
     }
 
     private void CheckPause()

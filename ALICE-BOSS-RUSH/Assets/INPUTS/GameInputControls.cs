@@ -346,6 +346,17 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""action"": ""DASH"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9824db08-b9f8-4c95-a77b-68fd5804b65a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DASH"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -366,19 +377,8 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""3fdd20e9-ba79-4f44-aa77-d7c12751717d"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PASS"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2c80e69d-9785-4b56-94b3-535f0ba5b404"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""127f4aae-56a8-4754-a14b-f559605a2eef"",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
