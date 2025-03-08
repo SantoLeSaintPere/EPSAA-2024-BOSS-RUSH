@@ -385,6 +385,17 @@ public partial class @GameInputControls: IInputActionCollection2, IDisposable
                     ""action"": ""PASS"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57958dd7-f40c-471c-b8d9-dbe16dd6a3cb"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PASS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
